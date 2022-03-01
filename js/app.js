@@ -32,20 +32,21 @@ const showPhones = (phonesObject) => {
         
         let counter = 0;
         const phoneSection = document.getElementById('phones')
+        phoneSection.textContent = ''
         phones.forEach(phone => {
             
             if ( counter < 20 ){
                 counter ++ ;
                 const div = document.createElement('div')
-                div.classList.add('col')
-
+                div.classList.add('col', 'mb-4')
                 div.innerHTML = `
-                            <div class="card h-100 container-fluid">
-                                <img class="img-fluid" src="https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-11-pro.jpg" class="card-img-top" alt="...">
+                            <div class=" card h-100 container-fluid pt-3">
+                                <img class="" src="${phone.image}" class="card-img-top" alt="...">
                                 <div class="card-body">
-                                    <h5 class="card-title">Card title</h5>
-                                    <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                                    <h5 class="card-title">${phone.phone_name}</h5>
+                                    <p class="card-text">Brand : ${phone.brand}</p>
                                 </div>
+                                <button class="btn btn-primary p-2 mb-2" type="button">Details</button>
                             </div>
               `;
 
