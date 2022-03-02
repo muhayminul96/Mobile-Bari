@@ -1,3 +1,5 @@
+// this dispaly switch
+
 const DisplaySwitch = (id,displayType) => {
   const htmlElemnt = document.getElementById(id);
   htmlElemnt.style.display = displayType;
@@ -7,6 +9,8 @@ const DisplaySwitch = (id,displayType) => {
 // get user input and load api 
 
 document.getElementById('search-btn').addEventListener('click',function (){
+  //  phone info hide display spiner
+
     DisplaySwitch('spiner','block');
     DisplaySwitch('all-phone','none');
     
@@ -39,7 +43,7 @@ const showPhones = (phonesObject) => {
     document.getElementById('phone-details').textContent = '';
     if(phonesObject.status){
         const phones = phonesObject.data;
-        
+        // create a counter avoid not load more 20 data 
         let counter = 0;
         
         phones.forEach(phone => {
@@ -180,13 +184,12 @@ const showPhoneDetails = phone => {
         }
         
 
-        
+        // spiner hide display phone  
         phoneDetailsBox.appendChild(div);
         phoneDetailsBox.appendChild(table);
+        // scroll to phone details 
+        scroll(0,150);
 
     }
 }
 
-const otherFeaturesShow = others => {
-  console.log(others)
-}

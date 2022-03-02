@@ -1,3 +1,5 @@
+
+/* Spiner Style  */
 .loader {
     border: 16px solid #f3f3f3;
     /* Light grey */
@@ -9,6 +11,7 @@
     animation: spin 2s linear infinite;
     display: none;
 }
+
 
 @keyframes spin {
     0% {
