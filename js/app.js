@@ -85,10 +85,10 @@ const showPhoneDetails = phone => {
     else{
         const phoneData = phone.data;
         console.log(phoneData)
-
+        const phoneDetailsBox = document.getElementById('phone-details')
+        phoneDetailsBox.textContent = '';
         div = document.createElement('div');
         div.classList.add('row', 'row-cols-3',  'mx-auto')
-        div.textContent = '';
         div.innerHTML = `
         
             <img class=" col-12 col-sm-4 img-fluid" src="${phoneData.image}" alt="">
@@ -134,7 +134,7 @@ const showPhoneDetails = phone => {
                       <tr>
                         
                         <td >Released Date</td>
-                        <td >phoneData.others.releaseDate</td>
+                        <td >${phoneData.releaseDate  ? phoneData.releaseDate : 'Release Date not avilable'}</td>
                       </tr>
                       <tr>
                         
@@ -152,6 +152,6 @@ const showPhoneDetails = phone => {
 
         `;
 
-        document.getElementById('phone-details').appendChild(div)
+        phoneDetailsBox.appendChild(div)
     }
 }
