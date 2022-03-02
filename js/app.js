@@ -1,5 +1,5 @@
 const DisplaySwitch = (id,displayType) => {
-  const htmlElemnt = document.getElementById('id');
+  const htmlElemnt = document.getElementById(id);
   htmlElemnt.style.display = displayType;
 }
 
@@ -7,6 +7,9 @@ const DisplaySwitch = (id,displayType) => {
 // get user input and load api 
 
 document.getElementById('search-btn').addEventListener('click',function (){
+    DisplaySwitch('spiner','block');
+    DisplaySwitch('all-phone','none');
+    
     const rawText = document.getElementById('search-txt');
     const txt = rawText.value.toLowerCase();
     
@@ -31,13 +34,14 @@ document.getElementById('search-btn').addEventListener('click',function (){
 // functon for show all phone data 
 
 const showPhones = (phonesObject) => {
+    const phoneSection = document.getElementById('phones');
+    phoneSection.textContent = '';
+    document.getElementById('phone-details').textContent = '';
     if(phonesObject.status){
         const phones = phonesObject.data;
         
         let counter = 0;
-        const phoneSection = document.getElementById('phones');
-        phoneSection.textContent = '';
-        document.getElementById('phone-details').textContent = ''
+        
         phones.forEach(phone => {
             
             if ( counter < 20 ){
@@ -65,6 +69,8 @@ const showPhones = (phonesObject) => {
     else{
         alert("sir ai phone to amr kase nai");
     }
+    DisplaySwitch('spiner','none')
+    DisplaySwitch('all-phone','block')
 }
 
 // load phone ditails
