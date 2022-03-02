@@ -47,7 +47,7 @@ const showPhones = (phonesObject) => {
             if ( counter < 20 ){
                 counter ++ ;
                 const div = document.createElement('div');
-                div.classList.add('col', 'mb-4');
+                div.classList.add('col', 'mb-4', 'col-sm-4');
                 div.innerHTML = `
                             <div class=" card h-100 container-fluid pt-3">
                                 <img class="" src="${phone.image}" class="card-img-top" alt="...">
