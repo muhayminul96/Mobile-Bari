@@ -1,11 +1,15 @@
+const DisplaySwitch = (id,displayType) => {
+  const htmlElemnt = document.getElementById('id');
+  htmlElemnt.style.display = displayType;
+}
 
 
 // get user input and load api 
 
 document.getElementById('search-btn').addEventListener('click',function (){
     const rawText = document.getElementById('search-txt');
-    
     const txt = rawText.value.toLowerCase();
+    
     rawText.value = '';
 
     if(txt){
@@ -33,6 +37,7 @@ const showPhones = (phonesObject) => {
         let counter = 0;
         const phoneSection = document.getElementById('phones');
         phoneSection.textContent = '';
+        document.getElementById('phone-details').textContent = ''
         phones.forEach(phone => {
             
             if ( counter < 20 ){
@@ -78,22 +83,22 @@ const loadPhoneDetail = slug => {
 // show spechic phone to fontpage
 
 const showPhoneDetails = phone => {
-    console.log(phone.status)
+   
     if(!phone.status){
         alert('sorry sir amr kase ditails info nai')
     }
     else{
         const phoneData = phone.data;
-        console.log(phoneData)
         const phoneDetailsBox = document.getElementById('phone-details')
         phoneDetailsBox.textContent = '';
+        
         div = document.createElement('div');
-        div.classList.add('row', 'row-cols-3',  'mx-auto')
+        div.classList.add('row', 'row-cols-2',  'mx-auto', 'my-5')
         div.innerHTML = `
         
-            <img class=" col-12 col-sm-4 my-5" src="${phoneData.image}" alt="">
+            <img class=" col-12 col-sm-4 my-5 " src="${phoneData.image}" alt="">
               
-            <div class="col-12 col-sm-8 border">
+            <div class="col-12 col-sm-8">
                 <table class="table">
                     <tbody>
                       <tr>
@@ -148,12 +153,33 @@ const showPhoneDetails = phone => {
             
         `;
 
-        others div
+        const table = document.createElement('table');
+        table.classList.add('table')
+        const tbody = document.createElement('tbody');
+        if(phoneData?.others){
+          for(const keys in phoneData?.others){
+            tr = document.createElement('tr');
+            value = phoneData.others[keys];
+            tr.innerHTML = `
+            
+                  <td class='col-6' >${keys}</td>
+                  <td class='col-6'>${value}</td>
+  
+            `
+            tbody.appendChild(tr);
+          }
+  
+          table.appendChild(tbody)
 
-        phoneDetailsBox.appendChild(div)
+        }
+        
+
+        
+        phoneDetailsBox.appendChild(div);
+        phoneDetailsBox.appendChild(table);
+
     }
 }
-
 
 const otherFeaturesShow = others => {
   console.log(others)
