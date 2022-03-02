@@ -46,20 +46,15 @@ const showPhones = (phonesObject) => {
                                     <h5 class="card-title">${phone.phone_name}</h5>
                                     <p class="card-text">Brand : ${phone.brand}</p>
                                 </div>
-                                <button class="btn btn-primary p-2 mb-2" type="button">Details</button>
+                                <button onclick="loadPhoneDetail('${phone.slug}')" class="btn btn-primary p-2 mb-2" type="button">Details</button>
                             </div>
               `;
 
               phoneSection.appendChild(div);
-
-
-
                 
             }
             
         });
-
-
 
     }
     else{
@@ -67,3 +62,15 @@ const showPhones = (phonesObject) => {
     }
 }
 
+// load phone ditails
+
+const loadPhoneDetail = slug => {
+    console.log(slug)
+    const url = `https://openapi.programming-hero.com/api/phone/${slug}`
+
+    fetch(url)
+        .then(res => res.json())
+        .then(data => console.log(data))
+
+
+}
