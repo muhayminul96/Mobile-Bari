@@ -46,7 +46,7 @@ const showPhones = (phonesObject) => {
                                     <h5 class="card-title">${phone.phone_name}</h5>
                                     <p class="card-text">Brand : ${phone.brand}</p>
                                 </div>
-                                <button onclick="loadPhoneDetail('${phone.slug}')" class="btn btn-primary p-2 mb-2" type="button">Details</button>
+                                <button onclick="loadPhoneDetail('${phone.slug}')" class="btn btn-primary p-2 mb-2 fw-bold" type="button">Details</button>
                             </div>
               `;
 
@@ -91,7 +91,7 @@ const showPhoneDetails = phone => {
         div.classList.add('row', 'row-cols-3',  'mx-auto')
         div.innerHTML = `
         
-            <img class=" col-12 col-sm-4 img-fluid" src="${phoneData.image}" alt="">
+            <img class=" col-12 col-sm-4 my-5" src="${phoneData.image}" alt="">
               
             <div class="col-12 col-sm-8 border">
                 <table class="table">
@@ -140,18 +140,21 @@ const showPhoneDetails = phone => {
                         
                         
                       </tr>
-                      <tr class="text-center">
-                        
-                        <td colspan="2"> <button type="button" class="btn btn-outline-primary">Others</button> </td>
-                      </tr>
                     </tbody>
                   </table>
                   
 
             </div>
-
+            
         `;
+
+        others div
 
         phoneDetailsBox.appendChild(div)
     }
+}
+
+
+const otherFeaturesShow = others => {
+  console.log(others)
 }
